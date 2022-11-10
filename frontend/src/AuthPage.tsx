@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Surface, Stack, Button, Input } from "./components";
 import { Link, useSearchParams } from "react-router-dom";
+import { logoUrl, domain } from "./config";
 import styles from "./AuthPage.module.css";
 
 interface Props {
@@ -32,7 +33,7 @@ function AuthPage({ type }: Props) {
                 if(data.error) return setError(data.message);
                 if(data.totp) return setTotpRequired(true);
                 let date = new Date(data.expires * 1000);
-                document.cookie = `nestauth_session=${data.sessionSecret};expires=${date.toUTCString()};domain=.imwux.me;path=/`;
+                document.cookie = `nestauth_session=${data.sessionSecret};expires=${date.toUTCString()};domain=.${domain};path=/`;
                 if(searchParams.get("url"))
                     window.open(searchParams.get("url")?.toString(), "_self");
                 else
@@ -55,7 +56,7 @@ function AuthPage({ type }: Props) {
         <div className={styles.container}>
             <Surface style={{ width: "300px" }}>
                 <Stack direction="vertical" center>
-                    <img className={styles.logo} src="https://host.imwux.me/images/logo-small.png" alt="Logo" />
+                    <img className={styles.logo} src={logoUrl} alt="Logo" />
                     <h1>Nest Login</h1>
                     {error && <p className={styles.error}>{error}</p>}
                     <Input onChange={(e) => setUsername(e.target.value)} placeholder="Username" disabled={totpRequired} style={{ width: "100%" }} />

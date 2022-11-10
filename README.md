@@ -1,11 +1,14 @@
 # Nestauth
-This is an authentication system that I have built for my personal server. Its sole purpose is to protect subdomains by authenticating requests to a NGINX reverse proxy. It is mostly meant for securing applications that you want only a few people to have  access to. Feel free to contact me if you encounter any issues and prs are always welcome :D
+This is an authentication system that I have built for my personal server. Its sole purpose is to protect subdomains by authenticating requests to a NGINX reverse proxy. It is mostly meant for securing applications that you want only a few people to have access to. Feel free to contact me if you encounter any issues and prs are always welcome :D
+
+**NOTE:** This only works in cases where you have one base domain (ex. *example.com*) and you want to secure a subdomain (ex. *test.example.com*)
 
 # Installing
 1. Clone the git repository
-2. Build the project using `npm run build`
-3. Setup the environment variables by some means. `.env.example` contains an example of environment variables.
-4. Start the application by running `node build/index.js`. I would recommend setting it up as some sort of daemon, for example a service on linux works fine.
+2. Change the values in frontend/src/config.ts
+3. Build the project using `npm run build`
+4. Setup the environment variables by some means. `.env.example` contains an example of environment variables.
+5. Start the application by running `node build/index.js`. I would recommend setting it up as some sort of daemon, for example a service on linux works fine.
 
 # NGINX Configuration
 Here is an example of what you would include into your NGINX reverse proxy configuration (I would recommend setting this up in a include folder and then include it). This setup assumes you are running nestauth on port 3000 and you need to replace `PUBLICURL` with whatever the public url of your instance of nestauth would be.

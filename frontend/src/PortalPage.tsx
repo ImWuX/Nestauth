@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Surface, Button } from "./components";
 import { useNavigate } from "react-router-dom";
+import { logoUrl } from "./config";
 import styles from "./PortalPage.module.css";
 
 import TotpPanel from "./panels/TotpPanel";
@@ -46,7 +47,7 @@ function PortalPage() {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <img src="https://host.imwux.me/images/logo-small.png" alt="Logo" />
+                <img src={logoUrl} alt="Logo" />
                 <h1>Nest Authentication Portal</h1>
             </div>
             {portalData &&
