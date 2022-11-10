@@ -5,13 +5,14 @@ This is an authentication system that I have built for my personal server. Its s
 
 # Installing
 1. Clone the git repository
-2. Change the values in frontend/src/config.ts
-3. Build the project using `npm run build`
-4. Setup the environment variables by some means. `.env.example` contains an example of environment variables.
-5. Start the application by running `node build/index.js`. I would recommend setting it up as some sort of daemon, for example a service on linux works fine.
+2. Install dependencies for backend and frontend using `npm i`
+3. Change the values in frontend/src/config.ts
+4. Build the project using `npm run build`
+5. Setup the environment variables by some means. `.env.example` contains an example of environment variables
+6. Start the application by running `node build/index.js`. I would recommend setting it up as some sort of daemon, for example a service on linux works fine
 
 # NGINX Configuration
-Here is an example of what you would include into your NGINX reverse proxy configuration (I would recommend setting this up in a include folder and then include it). This setup assumes you are running nestauth on port 3000 and you need to replace `PUBLICURL` with whatever the public url of your instance of nestauth would be.
+Here is an example of what you would include into your NGINX reverse proxy configuration (I would recommend setting this up in a include folder and then include it). This setup assumes you are running nestauth on port 3000 and you need to replace `PUBLICURL` with whatever the public url of your instance of nestauth would be
 ```
 location /nginxauth {
     internal;
